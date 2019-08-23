@@ -1262,7 +1262,7 @@ Docs & License: https://fullcalendar.io/
             t.addEventSource(v)
         }
     }
-    var Rn = { defaultRangeSeparator: " - ", titleRangeSeparator: " – ", defaultTimedEventDuration: "01:00:00", defaultAllDayEventDuration: { day: 1 }, forceEventDuration: !1, nextDayThreshold: "00:00:00", columnHeader: !0, defaultView: "", aspectRatio: 1.35, header: { left: "title", center: "", right: "today prev,next" }, weekends: !0, weekNumbers: !1, weekNumberCalculation: "local", editable: !1, scrollTime: "06:00:00", minTime: "00:00:00", maxTime: "24:00:00", showNonCurrentDates: !0, lazyFetching: !0, startParam: "start", endParam: "end", timeZoneParam: "timeZone", timeZone: "local", locales: [], locale: "", timeGridEventMinHeight: 0, themeSystem: "standard", dragRevertDuration: 500, dragScroll: !0, allDayMaintainDuration: !1, unselectAuto: !0, dropAccept: "*", eventOrder: "start,-duration,allDay,title", eventLimit: !1, eventLimitClick: "popover", dayPopoverFormat: { month: "long", day: "numeric", year: "numeric" }, handleWindowResize: !0, windowResizeDelay: 100, longPressDelay: 1e3, eventDragMinDistance: 5 },
+    var Rn = { defaultRangeSeparator: " - ", titleRangeSeparator: " – ", defaultTimedEventDuration: "01:00:00", defaultAllDayEventDuration: { day: 1 }, forceEventDuration: !1, nextDayThreshold: "00:00:00", columnHeader: !0, defaultView: "", aspectRatio: 1.35, header: { left: "title", center: "", right: "today prev,next" }, weekends: !0, weekNumbers: !1, weekNumberCalculation: "local", editable: !1, scrollTime: "06:00:00", minTime: "00:00:00", maxTime: "24:00:00", showNonCurrentDates: !0, lazyFetching: !0, startParam: "start", endParam: "end", timeZoneParam: "timeZone", timeZone: "local", locales: [], locale: "", timeGridEventMinHeight: 0, themeSystem: "standard", dragRevertDuration: 500, dragScroll: !0, allDayMaintainDuration: !1, unselectAuto: !0, dropAccept: "*", eventOrder: "start,-duration,allDay,title", eventLimit: !1, eventLimitClick: "popover", dayPopoverFormat: { year: "numeric", month: "2-digit", day: "2-digit" }, handleWindowResize: !0, windowResizeDelay: 100, longPressDelay: 1e3, eventDragMinDistance: 5 },
         In = { header: { left: "next,prev today", center: "", right: "title" }, buttonIcons: { prev: "fc-icon-chevron-right", next: "fc-icon-chevron-left", prevYear: "fc-icon-chevrons-right", nextYear: "fc-icon-chevrons-left" } },
         Cn = ["header", "footer", "buttonText", "buttonIcons"];
     var Mn = [yn, mn, bn, Dn, Tn];
@@ -1731,7 +1731,7 @@ Docs & License: https://fullcalendar.io/
             }, t.prototype.queryToolbarsHeight = function() { var e = 0; return this.header && (e += I(this.header.el)), this.footer && (e += I(this.footer.el)), e }, t.prototype.freezeHeight = function() { y(this.el, { height: this.el.getBoundingClientRect().height, overflow: "hidden" }) }, t.prototype.thawHeight = function() { y(this.el, { height: "", overflow: "" }) }, t
         }(fn);
 
-    function vr(e, t) { var n; return n = /^(year|month)$/.test(e.currentRangeUnit) ? e.currentRange : e.activeRange, this.dateEnv.formatRange(n.start, n.end, ot(t.titleFormat || function(e) { var t = e.currentRangeUnit; if ("year" === t) return { year: "yyyy" }; if ("month" === t) return { year: "yyyy", month: "MM" }; var n = L(e.currentRange.start, e.currentRange.end); return null !== n && n > 1 ? { year: "numeric", month: "numeric", day: "numeric" } : { year: "numeric", month: "numeric", day: "numeric" } }(e), t.titleRangeSeparator), { isEndExclusive: e.isRangeAllDay }) }
+    function vr(e, t) { var n; return n = /^(year|month)$/.test(e.currentRangeUnit) ? e.currentRange : e.activeRange, this.dateEnv.formatRange(n.start, n.end, ot(t.titleFormat || function(e) { var t = e.currentRangeUnit; if ("year" === t) return { year: "numeric" }; if ("month" === t) return { year: "numeric", month: "2-digit" }; var n = L(e.currentRange.start, e.currentRange.end); return null !== n && n > 1 ? { year: "numeric", month: "2-digit", day: "2-digit" } : { year: "numeric", month: "2-digit", day: "2-digit" } }(e), t.titleRangeSeparator), { isEndExclusive: e.isRangeAllDay }) }
 
     function gr(e) { return e.map(function(e) { return new e }) }
     var yr = function() {
@@ -2034,7 +2034,7 @@ Docs & License: https://fullcalendar.io/
             var r = e.def,
                 i = e.instance;
             return this._getTimeText(i.range.start, r.hasEnd ? i.range.end : null, r.allDay, t, n, i.forcedStartTzo, i.forcedEndTzo)
-        }, e.prototype._getTimeText = function(e, t, n, r, i, o, a) { var s = this.context.dateEnv; return null == r && (r = this.eventTimeFormat), null == i && (i = this.displayEventEnd), this.displayEventTime && !n ? i && t ? s.formatRange(e, t, r, { forcedStartTzo: o, forcedEndTzo: a }) : s.format(e, r, { forcedTzo: o }) : "" }, e.prototype.computeEventTimeFormat = function() { return { hour: "numeric", minute: "2-digit", omitZeroMinute: !0 } }, e.prototype.computeDisplayEventTime = function() { return !0 }, e.prototype.computeDisplayEventEnd = function() { return !0 }, e.prototype.getSkinCss = function(e) { return { "background-color": e.backgroundColor, "border-color": e.borderColor, color: e.textColor } }, e.prototype.sortEventSegs = function(e) {
+        }, e.prototype._getTimeText = function(e, t, n, r, i, o, a) { var s = this.context.dateEnv; return null == r && (r = this.eventTimeFormat), null == i && (i = this.displayEventEnd), this.displayEventTime && !n ? i && t ? s.formatRange(e, t, r, { forcedStartTzo: o, forcedEndTzo: a }) : s.format(e, r, { forcedTzo: o }) : "" }, e.prototype.computeEventTimeFormat = function() { return { hour: "2-digit", minute: "2-digit", omitZeroMinute: !0 } }, e.prototype.computeDisplayEventTime = function() { return !0 }, e.prototype.computeDisplayEventEnd = function() { return !0 }, e.prototype.getSkinCss = function(e) { return { "background-color": e.backgroundColor, "border-color": e.borderColor, color: e.textColor } }, e.prototype.sortEventSegs = function(e) {
             var t = this.context.view.eventOrderSpecs,
                 n = e.map(Or);
             return n.sort(function(e, n) { return oe(e, n, t) }), n.map(function(e) { return e._seg })
@@ -2119,7 +2119,7 @@ Docs & License: https://fullcalendar.io/
     var Nr = { startTime: J, duration: J, create: Boolean, sourceId: String },
         zr = { create: !0 };
 
-    function Ur(e, t) { return !e || t > 10 ? { weekday: "short" } : t > 1 ? { weekday: "short", month: "numeric", day: "numeric", omitCommas: !0 } : { weekday: "long" } }
+    function Ur(e, t) { return !e || t > 10 ? { weekday: "short" } : t > 1 ? { weekday: "short", month: "2-digit", day: "2-digit", omitCommas: !0 } : { weekday: "long" } }
 
     function Lr(e, t, n, r, i, o, a, s) {
         var u, l = o.view,
