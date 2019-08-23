@@ -1731,7 +1731,7 @@ Docs & License: https://fullcalendar.io/
             }, t.prototype.queryToolbarsHeight = function() { var e = 0; return this.header && (e += I(this.header.el)), this.footer && (e += I(this.footer.el)), e }, t.prototype.freezeHeight = function() { y(this.el, { height: this.el.getBoundingClientRect().height, overflow: "hidden" }) }, t.prototype.thawHeight = function() { y(this.el, { height: "", overflow: "" }) }, t
         }(fn);
 
-    function vr(e, t) { var n; return n = /^(year|month)$/.test(e.currentRangeUnit) ? e.currentRange : e.activeRange, this.dateEnv.formatRange(n.start, n.end, ot(t.titleFormat || function(e) { var t = e.currentRangeUnit; if ("year" === t) return { year: "numeric" }; if ("month" === t) return { year: "numeric", month: "long" }; var n = L(e.currentRange.start, e.currentRange.end); return null !== n && n > 1 ? { year: "numeric", month: "short", day: "numeric" } : { year: "numeric", month: "long", day: "numeric" } }(e), t.titleRangeSeparator), { isEndExclusive: e.isRangeAllDay }) }
+    function vr(e, t) { var n; return n = /^(year|month)$/.test(e.currentRangeUnit) ? e.currentRange : e.activeRange, this.dateEnv.formatRange(n.start, n.end, ot(t.titleFormat || function(e) { var t = e.currentRangeUnit; if ("year" === t) return { year: "yyyy" }; if ("month" === t) return { year: "yyyy", month: "MM" }; var n = L(e.currentRange.start, e.currentRange.end); return null !== n && n > 1 ? { year: "numeric", month: "numeric", day: "numeric" } : { year: "numeric", month: "numeric", day: "numeric" } }(e), t.titleRangeSeparator), { isEndExclusive: e.isRangeAllDay }) }
 
     function gr(e) { return e.map(function(e) { return new e }) }
     var yr = function() {
