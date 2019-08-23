@@ -44,26 +44,17 @@
 <script src='./assets/resource-timeline.js'></script>
 
 <script>
-    // import {
-    //     Calendar
-    // } from '@fullcalendar/core';
-    // import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
-
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
-            // plugins: [resourceTimelinePlugin],
-            // defaultView: 'resourceTimeline',
-            // resources: [
-            //     // your resource list
-            // ],
+
             timeZone: 'UTC',
             plugins: ['interaction', 'resourceTimeline'],
             header: {
-                left: 'today prev,next',
+                left: '',
                 center: 'title',
-                right: 'resourceTimelineDay'
+                right: ''
             },
             // editable: true,
             aspectRatio: 1.5,
