@@ -56,8 +56,24 @@
                 center: 'title',
                 right: ' '
             },
+            timeFormat: "H:mm",
+            views: {
+                month: {
+                    titleFormat: "YYYY-MM"
+                },
+                week: {
+                    titleFormat: "YYYY-MM-D",
+                    columnFormat: "M.D dddd"
+                },
+                days: {
+                    titleFormat: "YYYY-MM-D dddd",
+                    columnFormat: "M/D dddd"
+                }
+
+            },
+
             // titleFormat: 'dddd, MMMM D, YYYY',
-            // axisFormat: 'yyyy - MM - dd',
+            // axisFormat: 'HH(:mm)',
             // editable: true,
             aspectRatio: 1.5,
             defaultView: 'resourceTimelineDay',

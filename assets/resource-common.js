@@ -523,7 +523,7 @@ Docs & License: https://fullcalendar.io/scheduler
                     if (r.isValidDate(o)) { var s = r.addDays(o, -D); if (s < n) return !0 }
                 }
                 return !1
-            }(o) || r.appendToElement(e, '<div class="fc-license-message" style="' + r.htmlEscape(r.cssToStr(U)) + '">Please use a valid license key. <a href="' + j + '">More Info</a></div>')
+            }(o)
         }],
         eventDropTransformers: [function(e, r) { var t = e.resourceMutation; return t ? { oldResource: r.getResourceById(t.matchResourceId), newResource: r.getResourceById(t.setResourceId) } : { oldResource: null, newResource: null } }],
         optionChangeHandlers: A
