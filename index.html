@@ -44,6 +44,12 @@
 <script src='./assets/resource-timeline.js'></script>
 
 <script>
+    // import {
+    //     Calendar
+    // } from '@fullcalendar/core';
+    // import dayGridPlugin from '@fullcalendar/daygrid';
+    // import momentPlugin from '@fullcalendar/moment';
+
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
 
@@ -56,29 +62,69 @@
                 center: 'title',
                 right: ' '
             },
-            timeFormat: "H:mm",
+            // title: '2019 - 08 - 26',
+            allDayDefault: false,
+            // slotLabelFormat: "HH",
+            businessHours: {
+                dow: [1, 2, 3, 4, 5],
+                start: "06:00",
+                end: "24:00"
+            },
+
+            /* firstDay: 1,
+            monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+            monthNamesShort: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
+            dayNames: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
+            dayNamesShort: ["日", "一", "二", "三", "四", "五", "六"], */
+
+            allDaySlot: true,
+            allDayText: "全天",
+            timeFormat: "HH:mm", //设置的是添加的具体的日程上显示的时间
+            views: {
+                month: {
+                    titleFormat: "YYYY-M"
+                },
+                week: {
+                    titleFormat: "YYYY-M-D",
+                    columnFormat: "M.D dddd"
+                },
+                data: {
+                    titleFormat: "YYYY-M-D dddd",
+                    columnFormat: "M/D dddd"
+                }
+            },
+            hour12: true,
+            /* titleFormat: {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit'
+            },
+            // titleFormat: "YYYY-MM-D",
+            // timeFormat: "H:mm",
+            timeFormat: {
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                meridiem: false
+            },
+            hour12: false,
+            // defaultView: 'agendaDay',
             views: {
                 month: {
                     titleFormat: "YYYY-MM"
                 },
-                week: {
-                    titleFormat: "YYYY-MM-D",
-                    columnFormat: "M.D dddd"
-                },
                 days: {
-                    titleFormat: "YYYY-MM-D dddd",
-                    columnFormat: "M/D dddd"
-                }
+                    titleFormat: "YYYY-MM-D",
+                    columnFormat: "M-D"
+                },
 
             },
-
-            // titleFormat: 'dddd, MMMM D, YYYY',
-            // axisFormat: 'HH(:mm)',
+ */
             // editable: true,
             aspectRatio: 1.5,
             defaultView: 'resourceTimelineDay',
             resourceLabelText: 'Rooms',
-            resources: './assets/demo-resources.js',
+            resources: './assets/demo-resources.json',
             events: 'https://fullcalendar.io/demo-events.json?single-day&for-resource-timeline'
         });
 

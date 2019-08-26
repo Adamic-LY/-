@@ -244,16 +244,16 @@ Docs & License: https://fullcalendar.io/scheduler
                         w("years", r, n) > 1 ? d = { year: "numeric", month: "long" } : w("months", r, n) > 1 && (d = { month: "long" }), c && (o = { week: "short" }), l = { weekday: "narrow", day: "numeric" };
                         break;
                     case "hour":
-                        c && (d = { week: "short" }), w("days", r, n) > 1 && (o = { weekday: "short", day: "numeric", month: "numeric", omitCommas: !0 }), l = { hour: "numeric", minute: "2-digit", omitZeroMinute: !0, meridiem: "short" };
+                        c && (d = { week: "short" }), w("days", r, n) > 1 && (o = { weekday: "short", day: "numeric", month: "numeric", omitCommas: !0 }), l = { hour: "2-digit", minute: "2-digit", meridiem: false };
                         break;
                     case "minute":
-                        t.asRoughMinutes(s) / 60 >= g ? (d = { hour: "numeric", meridiem: "short" }, o = function(e) { return ":" + t.padStart(e.date.minute, 2) }) : d = { hour: "numeric", minute: "numeric", meridiem: "short" };
+                        t.asRoughMinutes(s) / 60 >= g ? (d = { hour: "numeric", meridiem: false }, o = function(e) { return ":" + t.padStart(e.date.minute, 2) }) : d = { hour: "numeric", minute: "numeric", meridiem: false };
                         break;
                     case "second":
-                        t.asRoughSeconds(s) / 60 >= g ? (d = { hour: "numeric", minute: "2-digit", meridiem: "lowercase" }, o = function(e) { return ":" + t.padStart(e.date.second, 2) }) : d = { hour: "numeric", minute: "2-digit", second: "2-digit", meridiem: "lowercase" };
+                        t.asRoughSeconds(s) / 60 >= g ? (d = { hour: "numeric", minute: "2-digit", meridiem: false }, o = function(e) { return ":" + t.padStart(e.date.second, 2) }) : d = { hour: "numeric", minute: "2-digit", second: "2-digit", meridiem: false };
                         break;
                     case "millisecond":
-                        d = { hour: "numeric", minute: "2-digit", second: "2-digit", meridiem: "lowercase" }, o = function(e) { return "." + t.padStart(e.millisecond, 3) }
+                        d = { hour: "numeric", minute: "2-digit", second: "2-digit", meridiem: false }, o = function(e) { return "." + t.padStart(e.millisecond, 3) }
                 }
                 return [].concat(d || [], o || [], l || [])
             }(i, e, n, r);
@@ -475,7 +475,7 @@ Docs & License: https://fullcalendar.io/scheduler
                 d.unshift("fc-timeline-event", "fc-h-event");
                 var h = this.getTimeText(i);
                 return '<a class="' + d.join(" ") + '" style="' + t.cssToStr(this.getSkinCss(l)) + '"' + (o.url ? ' href="' + t.htmlEscape(o.url) + '"' : "") + ">" + (h ? '<span class="fc-time-wrap"><span class="fc-time">' + t.htmlEscape(h) + "</span></span>" : "") + '<span class="fc-title-wrap"><span class="fc-title fc-sticky">' + (o.title ? t.htmlEscape(o.title) : "&nbsp;") + "</span></span>" + (a ? '<div class="fc-resizer fc-start-resizer"></div>' : "") + (c ? '<div class="fc-resizer fc-end-resizer"></div>' : "") + "</a>"
-            }, r.prototype.computeDisplayEventTime = function() { return !this.timeAxis.tDateProfile.isTimeScale }, r.prototype.computeDisplayEventEnd = function() { return !1 }, r.prototype.computeEventTimeFormat = function() { return { hour: "numeric", minute: "2-digit", omitZeroMinute: !0, meridiem: "narrow" } }, r.prototype.attachSegs = function(e, r) {
+            }, r.prototype.computeDisplayEventTime = function() { return !this.timeAxis.tDateProfile.isTimeScale }, r.prototype.computeDisplayEventEnd = function() { return !1 }, r.prototype.computeEventTimeFormat = function() { return { hour: "numeric", minute: "2-digit", meridiem: "false" } }, r.prototype.attachSegs = function(e, r) {
                 if (!this.el && this.masterContainerEl && (this.el = t.createElement("div", { className: "fc-event-container" }), r && this.el.classList.add("fc-mirror-container"), this.masterContainerEl.appendChild(this.el)), this.el)
                     for (var n = 0, i = e; n < i.length; n++) {
                         var o = i[n];
