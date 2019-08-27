@@ -1670,7 +1670,21 @@ Docs & License: https://fullcalendar.io/
                         h && v && r.classList.add(v), s(r, u), c.appendChild(r)
                     } else s(c, u)
                 }), c
-            }, t.prototype.updateToday = function(e) { this.toggleButtonEnabled("today", e) }, t.prototype.updatePrev = function(e) { this.toggleButtonEnabled("prev", e) }, t.prototype.updateNext = function(e) { this.toggleButtonEnabled("next", e) }, t.prototype.updateTitle = function(e) { v(this.el, "h2").forEach(function(t) { t.innerText = e }) }, t.prototype.updateActiveButton = function(e) {
+            }, t.prototype.updateToday = function(e) { this.toggleButtonEnabled("today", e) }, t.prototype.updatePrev = function(e) { this.toggleButtonEnabled("prev", e) }, t.prototype.updateNext = function(e) { this.toggleButtonEnabled("next", e) }, t.prototype.updateTitle = function(e) {
+                v(this.el, "h2").forEach(function(t) {
+
+
+
+                    var arr = e.split('/');
+                    var str = arr[2] + '-' + arr[0] + '-' + arr[1]
+                    e = str;
+                    t.innerText = e
+
+
+
+
+                })
+            }, t.prototype.updateActiveButton = function(e) {
                 var t = this.theme.getClass("buttonActive");
                 v(this.el, "button").forEach(function(n) { e && n.classList.contains("fc-" + e + "-button") ? n.classList.add(t) : n.classList.remove(t) })
             }, t.prototype.toggleButtonEnabled = function(e, t) { v(this.el, ".fc-" + e + "-button").forEach(function(e) { e.disabled = !t }) }, t

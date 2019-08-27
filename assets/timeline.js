@@ -14,6 +14,7 @@ Docs & License: https://fullcalendar.io/scheduler
         function n() { this.constructor = e }
         r(e, t), e.prototype = null === t ? Object.create(t) : (n.prototype = t.prototype, new n)
     }
+    var rr, am, pm
     var i, o = function() {
             return (o = Object.assign || function(e) {
                 for (var t, r = 1, n = arguments.length; r < n; r++)
@@ -244,16 +245,16 @@ Docs & License: https://fullcalendar.io/scheduler
                         w("years", r, n) > 1 ? d = { year: "numeric", month: "long" } : w("months", r, n) > 1 && (d = { month: "long" }), c && (o = { week: "short" }), l = { weekday: "narrow", day: "numeric" };
                         break;
                     case "hour":
-                        c && (d = { week: "short" }), w("days", r, n) > 1 && (o = { weekday: "short", day: "numeric", month: "numeric", omitCommas: !0 }), l = { hour: "2-digit", minute: "2-digit", meridiem: false };
+                        c && (d = { week: "short" }), w("days", r, n) > 1 && (o = { weekday: "short", day: "numeric", month: "numeric", omitCommas: !0 }), l = { hour: "2-digit", minute: "2-digit", omitZeroMinute: !0, meridiem: "short" };
                         break;
                     case "minute":
-                        t.asRoughMinutes(s) / 60 >= g ? (d = { hour: "numeric", meridiem: false }, o = function(e) { return ":" + t.padStart(e.date.minute, 2) }) : d = { hour: "numeric", minute: "numeric", meridiem: false };
+                        t.asRoughMinutes(s) / 60 >= g ? (d = { hour: "2-digit", meridiem: "short" }, o = function(e) { return ":" + t.padStart(e.date.minute, 2) }) : d = { hour: "2-digit", minute: "numeric", meridiem: "short" };
                         break;
                     case "second":
-                        t.asRoughSeconds(s) / 60 >= g ? (d = { hour: "numeric", minute: "2-digit", meridiem: false }, o = function(e) { return ":" + t.padStart(e.date.second, 2) }) : d = { hour: "numeric", minute: "2-digit", second: "2-digit", meridiem: false };
+                        t.asRoughSeconds(s) / 60 >= g ? (d = { hour: "2-digit", minute: "2-digit", meridiem: "lowercase" }, o = function(e) { return ":" + t.padStart(e.date.second, 2) }) : d = { hour: "2-digit", minute: "2-digit", second: "2-digit", meridiem: "lowercase" };
                         break;
                     case "millisecond":
-                        d = { hour: "numeric", minute: "2-digit", second: "2-digit", meridiem: false }, o = function(e) { return "." + t.padStart(e.millisecond, 3) }
+                        d = { hour: "2-digit", minute: "2-digit", second: "2-digit", meridiem: "lowercase" }, o = function(e) { return "." + t.padStart(e.millisecond, 3) }
                 }
                 return [].concat(d || [], o || [], l || [])
             }(i, e, n, r);
@@ -343,7 +344,45 @@ Docs & License: https://fullcalendar.io/scheduler
         return "years" === e ? o = n.diffWholeYears(i.start, i.end) : "months" === e ? o = n.diffWholeMonths(i.start, i.end) : "weeks" === e ? o = n.diffWholeMonths(i.start, i.end) : "days" === e && (o = t.diffWholeDays(i.start, i.end)), o || 0
     }
 
-    function C(e, r, n, i) { return { text: r, spanHtml: t.buildGotoAnchorHtml(i, { date: e, type: n, forceOff: !n }, { class: "fc-cell-text" }, t.htmlEscape(r)), date: e, colspan: 1, isWeekStart: !1 } }
+
+
+    // var rr = '',
+
+    function C(e, r, n, i) {
+        return {
+            text: r,
+            spanHtml: t.buildGotoAnchorHtml(i, { date: e, type: n, forceOff: !n }, { class: "fc-cell-text" },
+
+
+                // console.log(r),
+                // console.log(typeof(r)),
+                // console.log(r.substr(2, 2)),
+                // console.log(r.substring(0, 2)),
+                rr = r.substring(0, 2),
+                // console.log(rr),
+                am = rr,
+                pm = rr,
+                rr = r.substr(2, 2) == 'am' ? am : pm,
+                // console.log(Number(am) + 12),
+                am == 12 ? 24 : am,
+                pm == 12 ? pm : ((Number(pm)) + 12),
+                console.log(am, pm),
+                // r.substr(2, 2) == 'am' ? (r = am) : (r = pm),
+
+
+
+                // pm = (Number(rr)) + 12,
+                // console.log(r),
+                // console.log(r + ': 00'),
+
+
+
+                t.htmlEscape(r)),
+            date: e,
+            colspan: 1,
+            isWeekStart: !1
+        }
+    }
     var T, R = function() {
             function e(e, t) { this.headParent = e, this.bodyParent = t }
             return e.prototype.render = function(e, r) {
