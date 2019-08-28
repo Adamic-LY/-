@@ -349,34 +349,14 @@ Docs & License: https://fullcalendar.io/scheduler
     // var rr = '',
 
     function C(e, r, n, i) {
+        rr  =  r.substring(0,  2);        
+        am  =  r.substring(2,  4);        
+        rr  =   (rr  ==  12  &&  am  ==  'am'  ?  '24'  :  rr);       
+        rr  =   (rr  ==  12  &&  am  ==  'pm'  ?  '0'  :  rr);        
+        r  =   (am  ==  'am'  ?  (rr  +  ':00')  :  (Number(rr)  +  12  +  ':00'));
         return {
             text: r,
             spanHtml: t.buildGotoAnchorHtml(i, { date: e, type: n, forceOff: !n }, { class: "fc-cell-text" },
-
-
-                // console.log(r),
-                // console.log(typeof(r)),
-                // console.log(r.substr(2, 2)),
-                // console.log(r.substring(0, 2)),
-                rr = r.substring(0, 2),
-                // console.log(rr),
-                am = rr,
-                pm = rr,
-                rr = r.substr(2, 2) == 'am' ? am : pm,
-                // console.log(Number(am) + 12),
-                am == 12 ? 24 : am,
-                pm == 12 ? pm : ((Number(pm)) + 12),
-                console.log(am, pm),
-                // r.substr(2, 2) == 'am' ? (r = am) : (r = pm),
-
-
-
-                // pm = (Number(rr)) + 12,
-                // console.log(r),
-                // console.log(r + ': 00'),
-
-
-
                 t.htmlEscape(r)),
             date: e,
             colspan: 1,
