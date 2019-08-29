@@ -36,6 +36,7 @@
 <body>
     <div id='calendar'></div>
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src='./assets/index.js'></script>
 <script src='./assets/core.js'></script>
 <script src='./assets/interaction.js'></script>
@@ -64,76 +65,28 @@
                 right: ' '
             },
 
-            // titleFormat: 'YYYY-MM-DD',
-            // timeFormat: 'HH:mm',
-            // axisFormat: 'HH:mm',
-
             views: {
                 defaultView: '2019-08-27',
                 titleFormat: 'YYYY-MM-DD',
                 timeFormat: 'HH:mm',
-                // axisFormat: 'HH:mm',
 
             },
 
-            /* // title: '2019 - 08 - 26',
-            allDayDefault: false,
-            // slotLabelFormat: "HH",
-            businessHours: {
-                dow: [1, 2, 3, 4, 5],
-                start: "06:00",
-                end: "24:00"
-            }, */
 
-            /* firstDay: 1,
-            monthNames: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
-            monthNamesShort: ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"],
-            dayNames: ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"],
-            dayNamesShort: ["日", "一", "二", "三", "四", "五", "六"], */
+            /*  eventClick: function(calEvent, jsEvent, view) { //日程区块，单击时触发  
 
-            /* allDaySlot: true,
-            allDayText: "全天",
-            timeFormat: "HH:mm", //设置的是添加的具体的日程上显示的时间
-            views: {
-                month: {
-                    titleFormat: "YYYY-M"
-                },
-                week: {
-                    titleFormat: "YYYY-M-D",
-                    columnFormat: "M.D dddd"
-                },
-                data: {
-                    titleFormat: "YYYY-M-D dddd",
-                    columnFormat: "M/D dddd"
-                }
-            },
-            hour12: true, */
-            /* titleFormat: {
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit'
-            },
-            // titleFormat: "YYYY-MM-D",
-            // timeFormat: "H:mm",
-            timeFormat: {
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                meridiem: false
-            },
-            hour12: false,
-            // defaultView: 'agendaDay',
-            views: {
-                month: {
-                    titleFormat: "YYYY-MM"
-                },
-                days: {
-                    titleFormat: "YYYY-MM-D",
-                    columnFormat: "M-D"
-                },
+                 console.log(this)
+                     // console.log(o)
 
-            },
- */
+
+                 return false; //return false可以阻止点击后续事件发生（比如event中的url跳转事件）  
+             }, */
+
+
+
+
+
+
             // editable: true,
             aspectRatio: 1.5,
             defaultView: 'resourceTimelineDay',

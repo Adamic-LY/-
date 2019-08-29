@@ -483,69 +483,77 @@ Docs & License: https://fullcalendar.io/scheduler
         H = function(e) {
             function r(t, r, n) { var i = e.call(this, t) || this; return i.masterContainerEl = r, i.timeAxis = n, i }
             return n(r, e), r.prototype.renderSegHtml = function(e, r) {
-                var n = this.context.view,
-                    i = e.eventRange,
-                    o = i.def,
-                    l = i.ui,
-                    s = n.computeEventDraggable(o, l),
-                    a = e.isStart && n.computeEventStartResizable(o, l),
-                    c = e.isEnd && n.computeEventEndResizable(o, l),
-                    d = this.getSegClasses(e, s, a || c, r);
-                d.unshift("fc-timeline-event", "fc-h-event");
-                var h = this.getTimeText(i);
-                return '<a class="' + d.join(" ") + '" style="' + t.cssToStr(this.getSkinCss(l)) + '"' + (o.url ? ' href="' + t.htmlEscape(o.url) + '"' : "") + ">" + (h ? '<span class="fc-time-wrap"><span class="fc-time">' + t.htmlEscape(h) + "</span></span>" : "") + '<span class="fc-title-wrap"><span class="fc-title fc-sticky">' + (o.title ? t.htmlEscape(o.title) : "&nbsp;") + "</span></span>" + (a ? '<div class="fc-resizer fc-start-resizer"></div>' : "") + (c ? '<div class="fc-resizer fc-end-resizer"></div>' : "") + "</a>"
-            }, r.prototype.computeDisplayEventTime = function() { return !this.timeAxis.tDateProfile.isTimeScale }, r.prototype.computeDisplayEventEnd = function() { return !1 }, r.prototype.computeEventTimeFormat = function() { return { hour: "numeric", minute: "2-digit", meridiem: "false" } }, r.prototype.attachSegs = function(e, r) {
-                if (!this.el && this.masterContainerEl && (this.el = t.createElement("div", { className: "fc-event-container" }), r && this.el.classList.add("fc-mirror-container"), this.masterContainerEl.appendChild(this.el)), this.el)
-                    for (var n = 0, i = e; n < i.length; n++) {
-                        var o = i[n];
-                        this.el.appendChild(o.el)
-                    }
-            }, r.prototype.detachSegs = function(e) {
-                for (var r = 0, n = e; r < n.length; r++) {
-                    var i = n[r];
-                    t.removeElement(i.el)
-                }
-            }, r.prototype.computeSegSizes = function(e) {
-                for (var r = this.timeAxis, n = 0, i = e; n < i.length; n++) {
-                    var o = i[n],
-                        l = r.rangeToCoords(o);
-                    t.applyStyle(o.el, { left: o.left = l.left, right: -(o.right = l.right) })
-                }
-            }, r.prototype.assignSegSizes = function(e) {
-                if (this.el) {
+                    var n = this.context.view,
+                        i = e.eventRange,
+                        o = i.def,
+                        l = i.ui,
+                        s = n.computeEventDraggable(o, l),
+                        a = e.isStart && n.computeEventStartResizable(o, l),
+                        c = e.isEnd && n.computeEventEndResizable(o, l),
+                        d = this.getSegClasses(e, s, a || c, r);
+                    d.unshift("fc-timeline-event", "fc-h-event");
+                    var h = this.getTimeText(i);
+
+                    return '<a class="' + d.join(" ") + '" style="' + t.cssToStr(this.getSkinCss(l)) + '"' + (o.url ? ' href="' + t.htmlEscape(o.url) + '"' : "") + ">" + (h ? '<span class="fc-time-wrap"><span class="fc-time">' + t.htmlEscape(h) + "</span></span>" : "") + '<span class="fc-title-wrap"><span class="fc-title fc-sticky">' + (o.title ? t.htmlEscape(o.title) : "&nbsp;") + "</span></span>" + (a ? '<div class="fc-resizer fc-start-resizer"></div>' : "") + (c ? '<div class="fc-resizer fc-end-resizer"></div>' : "") + "</a>"
+                },
+
+
+
+
+
+
+                r.prototype.computeDisplayEventTime = function() { return !this.timeAxis.tDateProfile.isTimeScale }, r.prototype.computeDisplayEventEnd = function() { return !1 }, r.prototype.computeEventTimeFormat = function() { return { hour: "numeric", minute: "2-digit", meridiem: "false" } }, r.prototype.attachSegs = function(e, r) {
+                    if (!this.el && this.masterContainerEl && (this.el = t.createElement("div", { className: "fc-event-container" }), r && this.el.classList.add("fc-mirror-container"), this.masterContainerEl.appendChild(this.el)), this.el)
+                        for (var n = 0, i = e; n < i.length; n++) {
+                            var o = i[n];
+                            this.el.appendChild(o.el)
+                        }
+                }, r.prototype.detachSegs = function(e) {
                     for (var r = 0, n = e; r < n.length; r++) {
-                        (s = n[r]).height = t.computeHeightAndMargins(s.el)
+                        var i = n[r];
+                        t.removeElement(i.el)
                     }
-                    this.buildSegLevels(e);
-                    var i = L(e);
-                    t.applyStyleProp(this.el, "height", i);
-                    for (var o = 0, l = e; o < l.length; o++) {
-                        var s = l[o];
-                        t.applyStyleProp(s.el, "top", s.top)
+                }, r.prototype.computeSegSizes = function(e) {
+                    for (var r = this.timeAxis, n = 0, i = e; n < i.length; n++) {
+                        var o = i[n],
+                            l = r.rangeToCoords(o);
+                        t.applyStyle(o.el, { left: o.left = l.left, right: -(o.right = l.right) })
                     }
-                }
-            }, r.prototype.buildSegLevels = function(e) {
-                for (var t = [], r = 0, n = e = this.sortEventSegs(e); r < n.length; r++) {
-                    var i = n[r];
-                    i.above = [];
-                    for (var o = 0; o < t.length;) {
-                        for (var l = !1, s = 0, a = t[o]; s < a.length; s++) {
-                            var c = a[s];
-                            A(i, c) && (i.above.push(c), l = !0)
+                }, r.prototype.assignSegSizes = function(e) {
+                    if (this.el) {
+                        for (var r = 0, n = e; r < n.length; r++) {
+                            (s = n[r]).height = t.computeHeightAndMargins(s.el)
                         }
-                        if (!l) break;
-                        o += 1
-                    }
-                    for ((t[o] || (t[o] = [])).push(i), o += 1; o < t.length;) {
-                        for (var d = 0, h = t[o]; d < h.length; d++) {
-                            var u = h[d];
-                            A(i, u) && u.above.push(i)
+                        this.buildSegLevels(e);
+                        var i = L(e);
+                        t.applyStyleProp(this.el, "height", i);
+                        for (var o = 0, l = e; o < l.length; o++) {
+                            var s = l[o];
+                            t.applyStyleProp(s.el, "top", s.top)
                         }
-                        o += 1
                     }
-                }
-                return t
-            }, r
+                }, r.prototype.buildSegLevels = function(e) {
+                    for (var t = [], r = 0, n = e = this.sortEventSegs(e); r < n.length; r++) {
+                        var i = n[r];
+                        i.above = [];
+                        for (var o = 0; o < t.length;) {
+                            for (var l = !1, s = 0, a = t[o]; s < a.length; s++) {
+                                var c = a[s];
+                                A(i, c) && (i.above.push(c), l = !0)
+                            }
+                            if (!l) break;
+                            o += 1
+                        }
+                        for ((t[o] || (t[o] = [])).push(i), o += 1; o < t.length;) {
+                            for (var d = 0, h = t[o]; d < h.length; d++) {
+                                var u = h[d];
+                                A(i, u) && u.above.push(i)
+                            }
+                            o += 1
+                        }
+                    }
+                    return t
+                }, r
         }(t.FgEventRenderer);
 
     function L(e) {
@@ -640,3 +648,7 @@ Docs & License: https://fullcalendar.io/scheduler
         F = t.createPlugin({ defaultView: "timelineDay", views: { timeline: { class: _, eventResizableFromStart: !0 }, timelineDay: { type: "timeline", duration: { days: 1 } }, timelineWeek: { type: "timeline", duration: { weeks: 1 } }, timelineMonth: { type: "timeline", duration: { months: 1 } }, timelineYear: { type: "timeline", duration: { years: 1 } } } });
     e.HeaderBodyLayout = h, e.ScrollJoiner = d, e.StickyScroller = P, e.TimeAxis = I, e.TimelineLane = O, e.TimelineView = _, e.default = F, Object.defineProperty(e, "__esModule", { value: !0 })
 });
+
+
+/* var timeEvent = document.getElementsByClassName('.fc-title-wrap');
+console.log(timeEvent) */

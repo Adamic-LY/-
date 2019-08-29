@@ -440,3 +440,12 @@
     })
     /******/
 ]);
+
+/* 
+var timeEvent = document.getElementsByClassName('.fc-title-wrap');
+console.log(timeEvent);
+timeEvent.onclick = function() {
+    setTimeout(() => {
+        confirm(this.title)
+    }, 1000);
+} */

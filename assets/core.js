@@ -1762,7 +1762,7 @@ Docs & License: https://fullcalendar.io/
                     if (i && r.isValidSegDownEl(e.target)) {
                         var o = p(e.target, ".fc-has-url"),
                             a = o ? o.querySelector("a[href]").href : "";
-                        r.publiclyTrigger("eventClick", [{ el: t, event: new ct(r.calendar, i.eventRange.def, i.eventRange.instance), jsEvent: e, view: r.view }]), a && !e.defaultPrevented && (window.location.href = a)
+                        r.publiclyTrigger("eventClick", [{ el: t, event: new ct(r.calendar, i.eventRange.def, i.eventRange.instance), jsEvent: e, view: r.view }, console.log(this.text), console.log(this)]), a && !e.defaultPrevented && (window.location.href = a)
                     }
                 };
                 var r = t.component;
