@@ -23,7 +23,8 @@
         }
         
         #calendar {
-            max-width: 900px;
+            /* max-width: 900px; */
+            width: 100%;
             margin: 40px auto;
         }
     </style>
@@ -35,6 +36,7 @@
 
 <body>
     <div id='calendar'></div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src='./assets/index.js'></script>
@@ -43,15 +45,10 @@
 <script src='./assets/timeline.js'></script>
 <script src='./assets/resource-common.js'></script>
 <script src='./assets/resource-timeline.js'></script>
+<script src="./assets/zDialog.js"></script>
+<!-- <script src="artDialog/artDialog.js?skin=default"></script> -->
 
 <script>
-    // import {
-    //     Calendar
-    // } from '@fullcalendar/core';
-    // import dayGridPlugin from '@fullcalendar/daygrid';
-    // import momentPlugin from '@fullcalendar/moment';
-
-
     document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
 
@@ -71,21 +68,6 @@
                 timeFormat: 'HH:mm',
 
             },
-
-
-            /*  eventClick: function(calEvent, jsEvent, view) { //日程区块，单击时触发  
-
-                 console.log(this)
-                     // console.log(o)
-
-
-                 return false; //return false可以阻止点击后续事件发生（比如event中的url跳转事件）  
-             }, */
-
-
-
-
-
 
             // editable: true,
             aspectRatio: 1.5,

@@ -3,6 +3,11 @@ FullCalendar Core Package v4.3.1
 Docs & License: https://fullcalendar.io/
 (c) 2019 Adam Shaw
 */
+
+// import Dialog from './zDialog.js';
+// var diag = new Dialog();
+
+
 ! function(e, t) { "object" == typeof exports && "undefined" != typeof module ? t(exports) : "function" == typeof define && define.amd ? define(["exports"], t) : t((e = e || self).FullCalendar = {}) }(this, function(e) {
     "use strict";
     var t = { className: !0, colSpan: !0, rowSpan: !0 },
@@ -1762,7 +1767,23 @@ Docs & License: https://fullcalendar.io/
                     if (i && r.isValidSegDownEl(e.target)) {
                         var o = p(e.target, ".fc-has-url"),
                             a = o ? o.querySelector("a[href]").href : "";
-                        r.publiclyTrigger("eventClick", [{ el: t, event: new ct(r.calendar, i.eventRange.def, i.eventRange.instance), jsEvent: e, view: r.view }, console.log(this.text), console.log(this)]), a && !e.defaultPrevented && (window.location.href = a)
+                        r.publiclyTrigger("eventClick", [{ el: t, event: new ct(r.calendar, i.eventRange.def, i.eventRange.instance), jsEvent: e, view: r.view },
+                            //  console.log(t.style.width),
+                            // console.log(t.text),
+                            //  console.log(event),
+                            // console.log(r.view),
+                            // console.log(i),
+                            // console.log(i.component),
+                            // console.log(i.component.eventRenderer),
+                            // console.log(i.component.eventRenderer.el),
+                            // console.log(i.component.eventRenderer.el.childNodes),
+                            // // console.log(e)
+                            // console.log(i.component.eventRenderer.el.style),
+                            // console.log(i.component.eventRenderer.el.className),
+                            console.log(t.childNodes)
+
+
+                        ]), a && !e.defaultPrevented && (window.location.href = a)
                     }
                 };
                 var r = t.component;
