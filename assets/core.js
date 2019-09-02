@@ -1766,10 +1766,12 @@ Docs & License: https://fullcalendar.io/
                             a = o ? o.querySelector("a[href]").href : "";
                         r.publiclyTrigger("eventClick", [{ el: t, event: new ct(r.calendar, i.eventRange.def, i.eventRange.instance), jsEvent: e, view: r.view },
                             tankuang.className = "show",
-                            content.innerHTML = t.text,
+                            content.innerText = t.text,
                             tankuang.style.left = (e.pageX >= (document.body.offsetWidth - 300) ? ((document.body.offsetWidth - 350) + 'px') : (e.pageX + 'px')),
-                            // tankuang.style.top = (e.pageY >= e.clientY ? ((e.clientY) + 'px') : (e.pageX + 'px')),
-                            tankuang.style.top = e.pageY + 'px',
+                            tankuang.style.top = (e.pageY >= (window.scrollY - 200) ? ((window.scrollY - 200) + 'px') : (e.pageX + 'px')),
+                            // tankuang.style.top = e.pageY + 'px',
+                            // console.log(e),
+                            console.log(window.screenY, e.pageY),
 
                         ]), a && !e.defaultPrevented && (window.location.href = a)
                     }
