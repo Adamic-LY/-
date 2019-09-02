@@ -1767,7 +1767,8 @@ Docs & License: https://fullcalendar.io/
                         r.publiclyTrigger("eventClick", [{ el: t, event: new ct(r.calendar, i.eventRange.def, i.eventRange.instance), jsEvent: e, view: r.view },
                             tankuang.className = "show",
                             content.innerHTML = t.text,
-                            tankuang.style.left = e.pageX + 'px',
+                            tankuang.style.left = (e.pageX >= (document.body.offsetWidth - 300) ? ((document.body.offsetWidth - 350) + 'px') : (e.pageX + 'px')),
+                            // tankuang.style.top = (e.pageY >= e.clientY ? ((e.clientY) + 'px') : (e.pageX + 'px')),
                             tankuang.style.top = e.pageY + 'px',
 
                         ]), a && !e.defaultPrevented && (window.location.href = a)
